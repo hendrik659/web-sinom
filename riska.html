@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Es Sinom Centhini - Minuman Tradisional Segar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color:rgb(197, 197, 195);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif; /* Ubah font menjadi Times New Roman */
+            line-height: 1.6;
+            background-color: blue;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #87CEEB;
+            color: rgb(34, 13, 13);
+            padding: 1rem 5%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed; /* Tambahkan ini */
+            top: 0; /* Tambahkan ini */
+            width: 100%; /* Tambahkan ini */
+            z-index: 1000; /* Tambahkan ini untuk memastikan navbar di atas konten lainnya */
+            transition: background-color 0.3s ease;
+        }
+
+        .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Tambahkan ini untuk memusatkan teks */
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    .logo img {
+    height: 50px;
+    border-radius: 50%; /* Membuat gambar menjadi lingkaran */
+    object-fit: cover; /* Memastikan gambar terisi dengan baik */
+}
+
+        }
+        body.scrolled .navbar {
+        background-color: rgba(135, 206, 235, 0.9); /* Warna navbar saat menggulir */
+    }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hero {
+            
+            background-image: url('./img/5.png');
+            background-size: cover;
+            color:white;
+            text-align: center;
+            padding: 150px 20px;
+        }
+
+        .hero-content {
+            background: rgba(0,0,0,0.6);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .hero-content p {
+            margin-top: -20px; /* Tambahkan margin negatif untuk mengangkat teks */
+}
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .cta-button:hover {
+            background-color: #c0392b;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-section, .video-section, .maps-section {
+            padding: 50px 5%;
+            background-color:rgb(197, 197, 195);; /* Ubah warna latar belakang menjadi kuning */
+        }
+       
+     .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+        background-color: #f0f8ff; /* Warna latar belakang baru */
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.5s forwards;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            background-color: #1caa52; /* Warna latar belakang saat hover */
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid blue;
+            transition: transform 0.3s ease-in-out
+            
+        }
+        .product-card img:active {
+    transform: translateY(-20px); /* Geser ke atas 20px saat diklik */
+}
+        @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+        .size-selector {
+            margin: 10px 0;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-item {
+            max-width: 300px;
+            margin: 20px auto;
+            text-align: center;
+            
+        }
+
+        .video-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 30px 5%;
+             border-top: 2px solid var(--secondary-color)
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 0 15px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin-top: 20px;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-section {
+                margin: 10px 0;
+            }
+        }
+        .direction-button {
+        background-color: var(--accent-color);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        }
+        .direction-button:hover {
+            background-color: #aaa8c4
+        }
+        .cart-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            z-index: 1000;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart-button:hover {
+            background-color: #2980b9;
+        }
+
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .cart-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb(128, 19, 0);
+    
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #3ce77e;
+}
+
+.cart-item span {
+    font-size: 1rem;
+}
+
+.cart-item button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+    background-color: #c0392b;
+}
+
+#cart-total {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Navigasi Utama">
+        <div class="logo" aria-label="Logo">
+            <img src="img/6.jpg" alt="Logo" style="height: 50px; border-radius: 50%; object-fit: cover;"> Es Sinom Centhini
+        </div>
+        <ul class="nav-links" role="menubar">
+            <li role="menuitem"><a href="#beranda">Beranda</a></li>
+            <li role="menuitem"><a href="#menu">Menu</a></li>
+            <li role="menuitem"><a href="#lokasi">Lokasi</a></li>
+            <li role="menuitem"><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <h1>Minuman Segar Berkualitas</h1>
+            <p>Nikmati Kesegaran dalam Setiap Tegukan</p>
+            <a href=class="cta-button"></a>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <h2 style="text-align: center; margin-bottom: 30px;">Menu Minuman</h2>
+        <div id="product-container" class="product-grid"></div>
+    </section>
+
+    <section id="video" class="video-section">
+        <h2 style="text-align: center;">Video Es Sinom Chentini</h2>
+        <div id="video-container" class="video-grid"></div>
+    </section>
+
+    <section id="lokasi" class="maps-section">
+        <h2>Lokasi Kami</h2>
+        <div class="maps-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49513.47338142899!2d111.86578108217736!3d-8.047080190581408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78e3579108cf51%3A0xfc5037a0dbe4d864!2sEs%20Sinom%20Centhini%2001!5e0!3m2!1sid!2sid!4v1732590693801!5m2!1sid!2sid" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+        <div class="location-info">
+            <div class="info-card">
+                <h3>Es Sinom Chentini</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Timur SMA Katolik utara, jalan Kedung Indah, Kedungwaru, Kec. Kedungwaru, Kabupaten Tulungagung, Jawa Timur 66224</p>
+                <p><i class="fas fa-clock"></i> Buka Setiap Hari: 09.00 - 21.00 WIB</p>
+                <a href="https://maps.app.goo.gl/JqkPNfY5Dkmfymos8" class="direction-button" target="_blank">
+                    Petunjuk Arah
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="kontak">
+        <div class="footer-section">
+            <h4>Hubungi Kami</h4>
+            <p>essinomcenthini@gmail.com</p>
+            <p>+62 821-9920-5744</p>
+        </div>
+        <div class="footer-section">
+            <h4>Lokasi</h4>
+            <p>Jl. Kedung Indah, Kedungwaru</p>
+            <p>Tulungagung</p>
+        </div>
+        <div class="footer-section">
+            <h4>Ikuti Kami</h4>
+            <p>Instagram: <a href="https://www.instagram.com/essinom_centhini/profilecard/?igsh=MXA1dTRiNTJjdjV5Yw=="target="_blank">@essinom_centhini</a></p>
+            <p>Tiktok: <a href="https://www.tiktok.com/@es_sinomcenthini?_t=8rpAve8ZgFF&_r=1"target="_blank">@essinom_centhini</a></p>
+        </div>
+    </footer>
+
+    <div class="cart-button" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+    </div>
+
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <h2>Keranjang Belanja</h2>
+            <div id="cart-items"></div>
+            <div id="cart-total"></div>
+            <button onclick="checkout()">Checkout</button>
+            <button onclick="toggleCart()">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+       const products = [
+    {
+        id: 1,
+        name: "Es Sinom",
+        description: "Minuman tradisional yang terbuat dari kunyit dan gula jawa ditambah dengan es batu",
+        image: "img/1.png",
+        sizes: [
+            { size: 16, price: 5000 },
+            { size: 18, price: 8000 }
+        ]
+    },
+    {
+        id: 2,
+        name: "Es Sinom",
+        description: "Minuman tradisional yang terbuat dari kunyit dan gula jawa ditambah dengan es batu",
+        image: "img/2.png",
+        sizes: [
+            { size: 16, price: 5000 },
+            { size: 18, price: 8000 }
+        ]
+    },
+    {
+        id: 3,
+        name: "Es Mix",
+        description: "Minuman dengan campuran es sinom dan beras kencur, rasa lebih nikmat",
+        image: "img/3.jpg",
+        sizes: [
+            { size: 16, price: 5000 },
+            { size: 18, price: 8000 }
+        ]
+    }
+];
+       
+
+        const videos = [
+            {
+                title: "Es Sinom",
+                description: "Varian spesial Es Sinom",
+                source: "video/1.mp4",
+                poster: "img/4.png"
+            }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+    const container = document.getElementById('product-container');
+    container.innerHTML = '';
+    
+    products.forEach(product => {
+        const card = document.createElement('div');
+        card.classList.add('product-card');
+        card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3> 
+            <p>${product.description}</p>
+            <label class="size-label">Pilih Ukuran:</label>
+            <select class="size-selector" data-product-id="${product.id}">
+                ${product.sizes.map(size => 
+                    `<option value="${size.size}">Ukuran ${size.size} oz - Rp ${size.price.toLocaleString()}</option>`
+                ).join('')}
+            </select>
+            <div class="price" id="price-${product.id}">Rp ${product.sizes[0].price.toLocaleString()}</div>
+            <label class="quantity-label">Jumlah:</label>
+            <input type="number" class="quantity-input" data-product-id="${product.id}" value="1" min="1"> <!-- Tambahkan input kuantitas -->
+            <button onclick="addToCart(${product.id})" class="cta-button shake">Tambah ke Keranjang</button>
+           
+        `;
+        card.querySelector('.size-selector').addEventListener('change', function() {
+            updatePrice(this);
+        });
+        
+        container.appendChild(card);
+    });
+}
+                
+
+        function renderVideos() {
+            const container = document.getElementById('video-container');
+            container.innerHTML = '';
+            
+            videos.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.classList.add('video-item');
+                videoItem.innerHTML = `
+                    <video controls poster="${video.poster}">
+                        <source src="${video.source}" type="video/mp4">
+                        Browser Anda tidak mendukung tag video.
+                    </video>
+                    <div class="video-info">
+                        <h3>${video.title}</h3>
+                        <p>${video.description}</p>
+                    </div>
+                `;
+                
+                container.appendChild(videoItem);
+            });
+        }
+
+        function addToCart(productId) {
+    const productSelect = document.querySelector(`.size-selector[data-product-id="${productId}"]`);
+    const quantityInput = document.querySelector(`.quantity-input[data-product-id="${productId}"]`);
+    const selectedSize = parseInt(productSelect.value);
+    const quantity = parseInt(quantityInput.value);
+    const product = products.find(p => p.id === productId);
+    const selectedSizeObj = product.sizes.find(s => s.size === selectedSize);
+
+    // Check if product already in cart
+    const existingCartItem = cart.find(item => 
+        item.id === productId && item.size === selectedSize
+    );
+
+    if (existingCartItem) {
+        existingCartItem.quantity += quantity;
+    } else {
+        cart.push({
+            id: productId,
+            name: product.name,
+            size: selectedSize,
+            price: selectedSizeObj.price,
+            quantity: quantity,
+            image: product.image // Tambahkan properti gambar
+        });
+    }
+
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotalContainer = document.getElementById('cart-total');
+
+    // Clear previous cart items
+    cartItemsContainer.innerHTML = '';
+
+    // Populate cart items
+    cart.forEach(item => {
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.classList.add('cart-item');
+        cartItemDiv.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; margin-right: 10px;"> <!-- Tambahkan gambar -->
+            <span>${item.name} (${item.size} oz)</span>
+            <span>Rp ${item.price.toLocaleString()} x ${item.quantity}</span>
+            <button onclick="removeFromCart(${item.id}, ${item.size})">Hapus</button>
+        `;
+        cartItemsContainer.appendChild(cartItemDiv);
+    });
+
+    // Calculate and display total
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    cartTotalContainer.innerHTML = `Total: Rp ${total.toLocaleString()}`;
+}
+// ... existing code ...
+function toggleCart() {
+        const cartModal = document.getElementById('cart-modal');
+        const cartButton = document.querySelector('.cart-button');
+
+        // Tambahkan efek getaran
+        cartButton.classList.add('shake');
+
+        // Hapus kelas shake setelah animasi selesai
+        setTimeout(() => {
+            cartButton.classList.remove('shake');
+        }, 500);
+
+        cartModal.style.display = cartModal.style.display === 'flex' ? 'none' : 'flex';
+    }
+        
+    
+        function removeFromCart(productId, size) {
+            const index = cart.findIndex(item => 
+                item.id === productId && item.size === size
+            );
+
+            if (index !== -1) {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity -= 1;
+                } else {
+                    cart.splice(index, 1);
+                }
+            }
+
+            updateCartDisplay();
+        }
+
+        function toggleCart() {
+            const cartModal = document.getElementById('cart-modal');
+            cartModal.style.display = cartModal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+        alert('Keranjang Anda kosong!');
+        return;
+    }
+
+    // Create WhatsApp message with order details
+    const orderDetails = cart.map(item => 
+        `${item.name} (${item.size} oz) x ${item.quantity}: Rp ${(item.price * item.quantity).toLocaleString()}`
+    ).join('%0A');
+
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const whatsappMessage = `Halo, saya ingin memesan:%0A${orderDetails}%0ATotal: Rp ${total.toLocaleString()}`;
+
+    // Open WhatsApp with pre-filled message
+    window.open(`https://wa.me/6282199205744?text=${whatsappMessage}`, '_blank');
+
+    // Clear cart after checkout
+    cart = [];
+    updateCartDisplay();
+    toggleCart();
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            renderVideos();
+        });
+    </script>
+</body>
+</html>

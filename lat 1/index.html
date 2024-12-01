@@ -1,0 +1,142 @@
+#include <iostream>
+   #include <vector>
+   #include <string>
+   #include <limits>
+   
+   using namespace std;
+   
+   // Define a struct to represent a shoe
+   struct Sepatu {
+       string nama;
+       int hargaBeliRupiah;
+       int hargaJualRupiah;
+   };
+   
+   // Define a struct to represent a sales transaction
+   struct Transaksi {
+       string namaSepatu;
+       int jumlah;
+       int hargaTotalRupiah;
+   };
+   
+   // Function to add a new shoe to the inventory
+   void tambahSepatu(vector<Sepatu>& inventory) {
+       int jumlahSepatu;
+       cout << "Masukkan jumlah sepatu yang ingin ditambahkan: ";
+       cin >> jumlahSepatu;
+       cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
+   
+       for (int i = 0; i < jumlahSepatu; ++i) {
+           Sepatu sepatu;
+           cout << "Masukkan nama sepatu: ";
+           getline(cin, sepatu.nama);
+   
+           cout << "Masukkan harga beli (Rupiah): ";
+           cin >> sepatu.hargaBeliRupiah;
+           cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer after reading an integer
+           cout << "Masukkan harga jual (Rupiah): ";
+           cin >> sepatu.hargaJualRupiah;
+           cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer after reading an integer
+           inventory.push_back(sepatu);
+       }
+   }
+   
+   // Function to display all shoes in the inventory
+   void tampilkanSepatu(const vector<Sepatu>& inventory) {
+       cout << "Sepatu-sepatu di inventory:" << endl;
+       for (const Sepatu& sepatu : inventory) {
+           cout << "Nama: " << sepatu.nama << ", Harga Beli: " << sepatu.hargaBeliRupiah
+                << " Rupiah, Harga Jual: " << sepatu.hargaJualRupiah << " Rupiah" << endl;
+       }
+   }
+   
+   // Function to add a new sales transaction
+   void tambahTransaksi(vector<Transaksi>& transaksi, const vector<Sepatu>& inventory) {
+       int jumlahTransaksi;
+       cout << "Masukkan jumlah transaksi yang ingin ditambahkan: ";
+       cin >> jumlahTransaksi;
+       cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
+   
+       for (int i = 0; i < jumlahTransaksi; ++i) {
+           Transaksi trans;
+           cout << "Masukkan nama sepatu: ";
+           getline(cin, trans.namaSepatu);
+           cout << "Masukkan jumlah: ";
+           cin >> trans.jumlah;
+           cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer after reading an integer
+           int hargaTotalRupiah = 0;
+           for (const Sepatu& sepatu : inventory) {
+               if (sepatu.nama == trans.namaSepatu) {
+                   hargaTotalRupiah = sepatu.hargaJualRupiah * trans.jumlah;
+                   break;
+               }
+           }
+           trans.hargaTotalRupiah = hargaTotalRupiah;
+           transaksi.push_back(trans);
+       }
+   }
+   
+   // Function to display all sales transactions
+   void tampilkanTransaksi(const vector<Transaksi>& transaksi) {
+       cout << "Transaksi-transaksi penjualan:" << endl;
+       for (const Transaksi& trans : transaksi) {
+           cout << "Nama Sepatu: " << trans.namaSepatu << ", Jumlah: " << trans.jumlah
+                << ", Harga Total: " << trans.hargaTotalRupiah << " Rupiah" << endl;
+       }
+   }
+   
+   // Function to calculate total profit
+   int hitungKeuntungan(const vector<Transaksi>& transaksi, const vector<Sepatu>& inventory) {
+       int keuntunganRupiah = 0;
+       for (const Transaksi& trans : transaksi) {
+           for (const Sepatu& sepatu : inventory) {
+               if (sepatu.nama == trans.namaSepatu) {
+                   keuntunganRupiah += (sepatu.hargaJualRupiah - sepatu.hargaBeliRupiah) * trans.jumlah;
+                   break;
+               }
+           }
+       }
+       return keuntunganRupiah;
+   }
+   
+   int main() {
+       vector<Sepatu> inventory;
+       vector<Transaksi> transaksi;
+   
+       int choice;
+       while (true) {
+           cout << "Menu:" << endl;
+           cout << "1. Tambah sepatu ke inventory" << endl;
+           cout << "2. Tampilkan semua sepatu" << endl;
+           cout << "3. Tambah transaksi penjualan" << endl;
+           cout << "4. Tampilkan semua transaksi" << endl;
+           cout << "5. Hitung keuntungan" << endl;
+           cout << "6. Exit" << endl;
+           cout << "Masukkan pilihan: ";
+           cin >> choice;
+   
+           switch (choice) {
+               case 1:
+                   tambahSepatu(inventory);
+                   break;
+               case 2:
+                   tampilkanSepatu(inventory);
+                   break;
+               case 3:
+                   tambahTransaksi(transaksi, inventory);
+                   break;
+               case 4:
+                   tampilkanTransaksi(transaksi);
+                   break;
+               case 5:
+                   cout << "Keuntungan total: " << hitungKeuntungan(transaksi, inventory) << " Rupiah" << endl;
+                   break;
+               case 6:
+                   return 0;
+               default:
+                   cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
+           }
+       }
+       return 0;
+   }
+   

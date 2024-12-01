@@ -1,0 +1,312 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color:rgb(197, 197, 195);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', serif; /* Ubah font menjadi Times New Roman */
+    line-height: 1.6;
+    background-color: blue;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #87CEEB;
+    color: rgb(34, 13, 13);
+    padding: 1rem 5%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed; /* Tambahkan ini */
+    top: 0; /* Tambahkan ini */
+    width: 100%; /* Tambahkan ini */
+    z-index: 1000; /* Tambahkan ini untuk memastikan navbar di atas konten lainnya */
+    transition: background-color 0.3s ease;
+}
+
+.logo {
+display: flex;
+align-items: center;
+justify-content: center; /* Tambahkan ini untuk memusatkan teks */
+font-size: 1.5rem;
+font-weight: bold;
+
+}
+body.scrolled .navbar {
+background-color: rgba(135, 206, 235, 0.9); /* Warna navbar saat menggulir */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+.hero {
+    
+    background-size: cover;
+    color:black;
+    text-align: center;
+    padding: 150px 20px;
+}
+
+.hero-content {
+    background: rgba(0,0,0,0.6);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+.hero-content p {
+    margin-top: -20px; /* Tambahkan margin negatif untuk mengangkat teks */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.cta-button:hover {
+    background-color: #c0392b;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.menu-section, .video-section, .maps-section {
+    padding: 50px 5%;
+    background-color:rgb(197, 197, 195);; /* Ubah warna latar belakang menjadi kuning */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+background-color: #f0f8ff; /* Warna latar belakang baru */
+border-radius: 10px;
+padding: 20px;
+text-align: center;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+transition: transform 0.3s ease, background-color 0.3s ease;
+opacity: 0;
+transform: translateY(20px);
+animation: fadeInUp 0.5s forwards;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    background-color: #1caa52; /* Warna latar belakang saat hover */
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid blue;
+}
+@keyframes fadeInUp {
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+.size-selector {
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.video-item {
+    max-width: 300px;
+    margin: 20px auto;
+    text-align: center;
+    
+}
+
+.video-item video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.footer {
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 5%;
+     border-top: 2px solid var(--secondary-color)
+}
+
+.footer-section {
+    flex: 1;
+    margin: 0 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 20px;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin: 10px 0;
+    }
+}
+.direction-button {
+background-color: var(--accent-color);
+color: white;
+padding: 10px 15px;
+border-radius: 5px;
+text-decoration: none;
+transition: background-color 0.3s ease;
+}
+.direction-button:hover {
+    background-color: #aaa8c4
+}
+.cart-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-button:hover {
+    background-color: #2980b9;
+}
+
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-content {
+background-color: white;
+padding: 30px;
+border-radius: 10px;
+width: 400px;
+max-width: 90%;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border: 2px solid rgb(128, 19, 0);
+
+}
+
+.cart-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 10px;
+padding: 10px;
+border-bottom: 1px solid #ddd;
+background-color: #3ce77e;
+}
+
+.cart-item span {
+font-size: 1rem;
+}
+
+.cart-item button {
+background-color: var(--accent-color);
+color: white;
+border: none;
+padding: 5px 10px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+background-color: #c0392b;
+}
+
+#cart-total {
+font-weight: bold;
+margin-top: 20px;
+text-align: right;
+}
+
+button {
+margin-top: 10px;
+padding: 10px 20px;
+background-color: var(--secondary-color);
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+button:hover {
+background-color: #2980b9;
+
+}
